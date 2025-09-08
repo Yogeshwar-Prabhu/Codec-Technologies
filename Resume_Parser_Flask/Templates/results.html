@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parsed Resume Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Resume Parsing Results</h1>
+
+        {% if filename %}
+            <p><strong>File:</strong> {{ filename }}</p>
+        {% endif %}
+
+        {% if details %}
+            <p><strong>Name:</strong> {{ details.name or "Not Found" }}</p>
+            <p><strong>Email:</strong> {{ details.email or "Not Found" }}</p>
+
+            <p><strong>Education:</strong></p>
+            {% if details.education %}
+                <ul>
+                    {% for edu in details.education %}
+                        <li>{{ edu }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No education details found.</p>
+            {% endif %}
+
+            <p><strong>Skills:</strong></p>
+            {% if details.skills %}
+                <ul>
+                    {% for skill in details.skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No matching skills found.</p>
+            {% endif %}
+
+        {% elif skills %}
+            <p><strong>Skills Found:</strong></p>
+            {% if skills %}
+                <ul>
+                    {% for skill in skills %}
+                        <li>{{ skill }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No matching skills found.</p>
+            {% endif %}
+        {% else %}
+            <p>No data to display.</p>
+        {% endif %}
+
+        <a href="/">⬅ Upload Another Resume</a>
+    </div>
+</body>
+</html>

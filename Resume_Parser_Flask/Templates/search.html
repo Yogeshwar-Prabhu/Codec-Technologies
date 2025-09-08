@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Candidates</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Candidate Search</h1>
+
+        <form method="get" action="/search">
+            <input type="text" name="q" placeholder="Search by skill or name" value="{{ q|default('') }}">
+            <button type="submit">Search</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Skills</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in rows %}
+                <tr>
+                    <td>{{ row[0] }}</td>
+                    <td>{{ row[1] }}</td>
+                    <td>{{ row[2] }}</td>
+                </tr>
+                {% else %}
+                <tr><td colspan="3">No results found.</td></tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="/">⬅ Back to Upload</a>
+    </div>
+</body>
+</html>
