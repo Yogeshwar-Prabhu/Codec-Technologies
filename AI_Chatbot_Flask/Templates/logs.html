@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chat Logs</title>
+</head>
+<body>
+    <h2>Chat Logs</h2>
+    <ul>
+    {% for log in logs %}
+        <li>[{{ log.time }}] <b>You:</b> {{ log.user }} | <b>Bot:</b> {{ log.bot }}</li>
+    {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Back to Chat</a>
+</body>
+</html>

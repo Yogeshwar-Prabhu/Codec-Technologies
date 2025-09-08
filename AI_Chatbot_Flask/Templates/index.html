@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Chatbot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>AI Chatbot</h2>
+    <div class="chat-box">
+        {% for log in logs %}
+            <p><b>You:</b> {{ log.user }}</p>
+            <p><b>Bot:</b> {{ log.bot }}</p>
+            <hr>
+        {% endfor %}
+    </div>
+    <form method="POST">
+        <input type="text" name="message" placeholder="Type your message..." required>
+        <button type="submit">Send</button>
+    </form>
+    <a href="{{ url_for('logs') }}">View Chat Logs</a>
+</body>
+</html>
