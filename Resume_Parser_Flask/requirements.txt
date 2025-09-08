@@ -1,0 +1,5 @@
+Flask
+pandas
+pdfplumber
+python-docx
+docx2txt
